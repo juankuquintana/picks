@@ -1,0 +1,46 @@
+HTTP/1.1 200 OK
+Date: Mon, 06 Nov 2023 18:53:29 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Upgrade: h2
+Connection: Upgrade
+Content-Length: 670
+Content-Type: application/json
+X-Request: "https://v3.football.api-sports.io/fixtures/rounds?current=false&league=4&season=2024"
+
+{
+   "get":"fixtures/rounds",
+   "parameters":{
+      "current":"false",
+      "league":"4",
+      "season":"2024"
+   },
+   "errors":[
+
+   ],
+   "results":19,
+   "paging":{
+      "current":1,
+      "total":1
+   },
+   "response":[
+      "Group A - 1",
+      "Group B - 1",
+      "Group D - 1",
+      "Group C - 1",
+      "Group E - 1",
+      "Group F - 1",
+      "Group B - 2",
+      "Group A - 2",
+      "Group C - 2",
+      "Group E - 2",
+      "Group D - 2",
+      "Group F - 2",
+      "Group A - 3",
+      "Group B - 3",
+      "Group D - 3",
+      "Group C - 3",
+      "Group E - 3",
+      "Group F - 3",
+      "Round of 16"
+   ]
+}

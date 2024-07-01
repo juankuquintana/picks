@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en' class='h-full'>
+  <head>
+    <title>Admin - Picks</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <meta name='HandheldFriendly' content='True'>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'tailwind', 'inter-font', 'data-turbo-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+
+    <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png'>
+    <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png'>
+    <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png'>
+    <link rel='manifest' href='/site.webmanifest'>
+  </head>
+
+  <body class='h-full'>
+    <main class='container h-full mx-auto pt-8 px-5 w-full'>
+      <header class='py-4 px-6 flex justify-between items-center w-full h-20'>
+        <div class='flex items-center'>
+          <%= link_to admin_root_path do %>
+            <%= render partial: 'shared/svg/logo' %>
+          <% end %>
+        </div>
+
+        <nav class='space-x-4 ml-auto'>
+          <%= link_to t('views.log_out'), logout_path, class: 'text-black hover:text-gray-300' %>
+        </nav>
+      </header>
+
+      <%= yield %>
+    </main>
+  </body>
+</html>

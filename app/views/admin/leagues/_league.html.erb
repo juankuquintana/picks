@@ -1,0 +1,45 @@
+<div class='px-4 sm:px-0'>
+  <h3 class='text-base font-semibold leading-7 text-gray-900'>League Information</h3>
+  <p class='mt-1 max-w-2xl text-sm leading-6 text-gray-500'>League details and information.</p>
+</div>
+<div class='mt-6 border-t border-gray-100'>
+  <dl class='divide-y divide-gray-100'>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Name</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @league.name %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Logo</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'>
+        <img src='<%= @league.logo %>' width='32px' height='32px'>
+      </dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Country</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @league.country.name %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Adapters</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @league.adapters %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Created at</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @league.created_at %></dd>
+    </div>
+  </dl>
+</div>
+
+<div data-controller='tabs' data-tabs-default-tab-value='rounds' class='mb-4'>
+  <ul class='flex flex-wrap -mb-px text-sm font-medium text-center border-b border-gray-200' role='tablist'>
+    <li class='me-2' role='presentation'>
+      <button id='rounds' data-tabs-target='btn' data-action='click->tabs#select' class='inline-block p-4 rounded-t-lg'>
+        Rounds
+      </button>
+    </li>
+  </ul>
+  <div>
+    <div data-tabs-target='tab' id='rounds'>
+      <%= render partial: 'admin/leagues/rounds', locals: { rounds: @league.rounds } %>
+    </div>
+  </div>
+</div>

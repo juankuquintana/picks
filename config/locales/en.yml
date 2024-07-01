@@ -1,0 +1,20 @@
+en:
+  message_error:
+    authentication_failed: Debes autenticarte para ver esta página.
+  views:
+    log_in: 'Entrar'
+    log_out: 'Cerrar sesión'
+    dashboard: 'Dashboard'
+    admin:
+      accounts: 'Accounts'
+      models: 'Models'
+      leagues: 'Leagues'
+      orders: 'Orders'
+      countries: 'Countries'
+      users: 'Users'
+      total: 'Total'
+      view: 'View'
+      submit: 'Submit'
+  controllers:
+    message_error_operation_failed: 'La operación ha fallado, por favor contacta a soporte.'
+  mailers:

@@ -1,0 +1,8 @@
+<header class='py-4 pl-6 flex flex-row-reverse items-center w-full h-20'>
+  <nav class='space-x-4 ml-auto flex items-center justify-center'>
+    <%= link_to logout_path, class: 'text-sm font-medium px-5 py-2 rounded-md leading-6 text-gray-900 hover:bg-gray-100' do %>
+      <%= t('views.log_out') %>
+      <span aria-hidden='true'>&rarr;</span>
+    <% end %>
+  </nav>
+</header>

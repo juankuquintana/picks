@@ -1,0 +1,40 @@
+<section class='bg-white'>
+  <div class='container px-6 py-10 mx-auto'>
+    <h1 class='mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl'>
+      <span class='underline underline-offset-4 decoration-4 decoration-blue-400'>Admin</span>
+    </h1>
+
+    <div class='grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 sm:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3'>
+      <div class='w-full'>
+        <div class='w-full h-64 py-4 px-4 bg-gray-100 rounded-lg'>
+          <p class='text-lg font-bold mb-4'><%= t('views.admin.orders') %></p>
+          <p><%= t('views.admin.total') %>: <%= Order.count %> <%= link_to t('views.admin.view'), admin_orders_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
+        </div>
+      </div>
+
+      <div class='w-full'>
+        <div class='w-full h-64 py-4 px-4 bg-gray-100 rounded-lg'>
+          <p class='text-lg font-bold mb-4'><%= t('views.admin.models') %></p>
+          <p><%= t('views.admin.users') %>: <%= User.count %> <%= link_to t('views.admin.view'), admin_users_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
+          <p><%= t('views.admin.accounts') %>: <%= Account.count %> <%= link_to t('views.admin.view'), admin_accounts_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
+          <p><%= t('views.admin.leagues') %>: <%= League.count %> <%= link_to t('views.admin.view'), admin_leagues_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
+          <p><%= t('views.admin.countries') %>: <%= Country.count %> <%= link_to t('views.admin.view'), admin_countries_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
+        </div>
+      </div>
+
+      <div class='w-full col-span-2'>
+        <div class='w-full h-64 py-4 px-4 bg-gray-100 rounded-lg'>
+          <p class='text-lg font-bold mb-4'>Processors</p>
+        </div>
+      </div>
+
+      <div class='w-full'>
+        <div class='w-full h-64 py-4 px-4 bg-gray-100 rounded-lg'>
+          <p class='text-lg font-bold mb-4'>Tools</p>
+          <p><%= link_to 'Feature flags', '/admin/flipper', class: 'font-medium text-blue-600 hover:underline' %> </p>
+          <p><%= link_to 'Sidekiq', '/admin/sidekiq', class: 'font-medium text-blue-600 hover:underline' %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

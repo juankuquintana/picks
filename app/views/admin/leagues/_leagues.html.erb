@@ -1,0 +1,60 @@
+<div class='flex flex-col mt-6'>
+  <div class='-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
+    <div class='inline-block min-w-full py-2 align-middle md:px-6 lg:px-8'>
+      <div class='overflow-hidden border border-gray-200 md:rounded-lg'>
+        <table class='min-w-full divide-y divide-gray-200'>
+          <thead class='bg-gray-50'>
+            <tr>
+              <th scope='col' class='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                Name
+              </th>
+              <th scope='col' class='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                Country
+              </th>
+              <th scope='col' class='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                Logo
+              </th>
+              <th scope='col' class='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'>
+                Created at
+              </th>
+              <th scope='col' class='relative py-3.5 px-4'>
+                <span class='sr-only'>View</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class='bg-white divide-y divide-gray-200'>
+            <% @leagues.each do |league| %>
+              <tr>
+                <td class='px-4 py-4 text-sm font-medium whitespace-nowrap text-left'>
+                  <div>
+                    <p class='text-sm font-normal text-gray-600'><%= league.name %></p>
+                  </div>
+                </td>
+                <td class='px-4 py-4 text-sm whitespace-nowrap text-left'>
+                  <div>
+                    <p class='text-gray-500'><%= league.country.name %></p>
+                  </div>
+                </td>
+                <td class='px-4 py-4 text-sm whitespace-nowrap text-left'>
+                  <div>
+                    <img src='<%= league.logo %>' width='32px' height='32px'>
+                  </div>
+                </td>
+                <td class='px-4 py-4 text-sm whitespace-nowrap text-left'>
+                  <div>
+                    <p class='text-gray-500'><%= league.created_at %></p>
+                  </div>
+                </td>
+                <td class='px-4 py-4 text-sm whitespace-nowrap text-center'>
+                  <div>
+                    <p class='font-medium text-blue-600 hover:underline'><%= link_to 'View', admin_league_path(league.id) %></p>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

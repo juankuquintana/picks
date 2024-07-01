@@ -1,0 +1,11 @@
+<section class='container px-4 mx-auto'>
+  <% breadcrumbs = [
+       { title: t('views.admin.accounts'), path: admin_accounts_path },
+       { title: @account.email, path: admin_account_path(@account.email) }
+     ] %>
+  <%= render partial: 'shared/admin/breadcrumbs', locals: { breadcrumbs: } %>
+
+  <div class='mt-6'>
+    <%= render 'account' %>
+  </div>
+</section>

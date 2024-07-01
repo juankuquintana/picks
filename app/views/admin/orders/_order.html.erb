@@ -1,0 +1,51 @@
+<div class='px-4 sm:px-0'>
+  <h3 class='text-base font-semibold leading-7 text-gray-900'>Order Information</h3>
+  <p class='mt-1 max-w-2xl text-sm leading-6 text-gray-500'>Order details and information.</p>
+</div>
+<div class='mt-6 border-t border-gray-100'>
+  <dl class='divide-y divide-gray-100'>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>User</dt>
+      <dd class='mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0 text-blue-600 hover:underline'><%= link_to @order.user.email, admin_user_path(@order.user.email) %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Account</dt>
+      <dd class='mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0 text-blue-600 hover:underline'><%= link_to @order.account.email, admin_account_path(@order.account.email) %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>State</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @order.state %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Runs</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @order.runs %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Created At</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @order.created_at %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Updated At</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @order.updated_at %></dd>
+    </div>
+    <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+      <dt class='text-sm font-medium leading-6 text-gray-900'>Last processed at</dt>
+      <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @order.last_processed_at %></dd>
+    </div>
+  </dl>
+</div>
+
+<div data-controller='tabs' data-tabs-default-tab-value='order-items' class='mb-4'>
+  <ul class='flex flex-wrap -mb-px text-sm font-medium text-center border-b border-gray-200' role='tablist'>
+    <li class='me-2' role='presentation'>
+      <button id='order-items' data-tabs-target='btn' data-action='click->tabs#select' class='inline-block p-4 rounded-t-lg'>
+        Order Items
+      </button>
+    </li>
+  </ul>
+  <div>
+    <div data-tabs-target='tab' id='order-items'>
+      <%= render partial: 'order_items', locals: { order_items: @order.order_items } %>
+    </div>
+  </div>
+</div>

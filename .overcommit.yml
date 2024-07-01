@@ -1,0 +1,24 @@
+verify_signatures: false
+
+CommitMsg:
+  CapitalizedSubject:
+    enabled: false
+  MessageFormat:
+    enabled: false
+
+PreCommit:
+  ALL:
+    exclude:
+      - 'public/**/*'
+      - 'bower_components/**/*'
+      - 'node_modules/**/*'
+      - 'vendor/**/*'
+      - 'tmp/**/*'
+  ErbLint:
+    enabled: true
+  RuboCop:
+    enabled: true
+
+PrePush:
+  Minitest:
+    enabled: true

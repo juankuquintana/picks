@@ -1,0 +1,39 @@
+<div class='px-4 sm:px-0'>
+  <h3 class='text-base font-semibold leading-7 text-gray-900'>Account Information</h3>
+  <p class='mt-1 max-w-2xl text-sm leading-6 text-gray-500'>Account details and information.</p>
+</div>
+<div class='flex flex-row mt-6 justify-between gap-x-36	'>
+  <div class='border-t border-gray-100 w-full'>
+    <dl class='divide-y divide-gray-100'>
+      <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+        <dt class='text-sm font-medium leading-6 text-gray-900'>Full name</dt>
+        <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @account.name %></dd>
+      </div>
+      <div class='px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0'>
+        <dt class='text-sm font-medium leading-6 text-gray-900'>Email address</dt>
+        <dd class='mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0'><%= @account.email %></dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+<div data-controller='tabs' data-tabs-default-tab-value='users' class='mb-4'>
+  <ul class='flex flex-wrap -mb-px text-sm font-medium text-center border-b border-gray-200' role='tablist'>
+    <li class='me-2' role='presentation'>
+      <button id='users' data-tabs-target='btn' data-action='click->tabs#select' class='inline-block p-4 rounded-t-lg'>
+        Users
+      </button>
+      <button id='activity-logs' data-tabs-target='btn' data-action='click->tabs#select' class='inline-block p-4 rounded-t-lg'>
+        Activity Log
+      </button>
+    </li>
+  </ul>
+  <div>
+    <div data-tabs-target='tab' id='users'>
+      <%= render partial: 'admin/shared/users', locals: { users: @account.users } %>
+    </div>
+    <div data-tabs-target='tab' id='activity-logs'>
+      <%= render 'admin/shared/activity_logs' %>
+    </div>
+  </div>
+</div>

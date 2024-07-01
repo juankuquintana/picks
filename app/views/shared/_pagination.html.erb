@@ -1,0 +1,11 @@
+<div class='flex justify-center items-center mt-6'>
+  <div class='items-center hidden md:flex gap-x-3'>
+    <% (items.current_page - 4..items.current_page + 4).each do |page| %>
+      <% if page == items.current_page %>
+        <%= link_to page, url_for(page:), class: 'px-2 py-1 text-sm font-medium text-indigo-500 rounded-md hover:bg-gray-100 bg-gray-50' %>
+      <% elsif page > 0 && page <= items.total_pages %>
+        <%= link_to page, url_for(page:), class: 'px-2 py-1 text-sm font-medium text-indigo-700 rounded-md hover:bg-gray-100' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

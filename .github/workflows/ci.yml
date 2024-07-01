@@ -1,0 +1,68 @@
+name: "CI"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+  push:
+    branches: [ main ]
+
+env:
+  DATABASE_HOST: 127.0.0.1
+  DATABASE_USER: postgres
+  DATABASE_PORT: 5432
+  DATABASE_PASSWORD: ""
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run Rubocop
+        run: bundle exec rubocop --parallel
+      - name: Run ERBLint
+        run: bundle exec erblint --lint-all
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    services:
+      postgres:
+        image: postgres:13-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_USER: ${{ env.DATABASE_USER }}
+          POSTGRES_HOST_AUTH_METHOD: trust
+    env:
+      RAILS_ENV: test
+      CI: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install Node
+        uses: actions/setup-node@v4
+      - name: Install JS Deps
+        run: npm install
+      - name: Set up database schema
+        run: bin/rails db:setup
+      - name: Set up database seeds
+        run: bin/rails db:seed
+      - name: Set up assets
+        run: bin/rails assets:clean assets:precompile
+      - name: Run tests
+        run: bin/rails test
+      - name: Run JS tests
+        run: npm test

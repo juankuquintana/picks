@@ -1,0 +1,42 @@
+common: &default_settings
+  license_key: <%= PicksConfig.new_relic_license %>
+
+  app_name: 'picks'
+
+  distributed_tracing:
+    enabled: true
+
+  log_level: info
+
+  application_logging:
+    # If `true`, all logging-related features for the agent can be enabled or disabled
+    # independently. If `false`, all logging-related features are disabled.
+    enabled: true
+    forwarding:
+      # If `true`, the agent captures log records emitted by this application.
+      enabled: true
+      # Defines the maximum number of log records to buffer in memory at a time.
+      max_samples_stored: 10000
+    metrics:
+      # If `true`, the agent captures metrics related to logging for this application.
+      enabled: true
+    local_decorating:
+      # If `true`, the agent decorates logs with metadata to link to entities, hosts, traces, and spans.
+      # This requires a log forwarder to send your log files to New Relic.
+      # This should not be used when forwarding is enabled.
+      enabled: false
+
+development:
+  <<: *default_settings
+  monitor_mode: false
+
+test:
+  <<: *default_settings
+  monitor_mode: false
+
+staging:
+  <<: *default_settings
+  app_name: 'picks (Staging)'
+
+production:
+  <<: *default_settings

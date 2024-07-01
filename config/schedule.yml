@@ -1,0 +1,5 @@
+fixture_sync_overlord:
+  cron: "*/15 * * * *"
+  class: "FixtureSyncOverlord"
+  queue: default
+
