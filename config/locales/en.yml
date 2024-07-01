@@ -8,6 +8,7 @@ en:
     admin:
       accounts: 'Accounts'
       models: 'Models'
+      teams: 'Teams'
       leagues: 'Leagues'
       orders: 'Orders'
       countries: 'Countries'

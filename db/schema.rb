@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_005538) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_01_210522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -123,6 +123,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_005538) do
     t.datetime "updated_at", null: false
     t.index ["league_id"], name: "index_rounds_on_league_id"
     t.index ["name", "season", "league_id"], name: "index_rounds_on_name_and_season_and_league_id", unique: true
+  end
+
+  create_table "teams", comment: "This table stores a team information", force: :cascade do |t|
+    t.string "name", limit: 255, null: false, comment: "The team name"
+    t.string "code", comment: "The 3 letter code for a team"
+    t.text "logo", comment: "The logo or flag of a team"
+    t.jsonb "adapters", null: false, comment: "Stores the reference IDs of the team from our different providers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_identities", comment: "This table stores the user identity providers associated to a user for authentication", force: :cascade do |t|
