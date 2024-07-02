@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTeams < ActiveRecord::Migration[7.1]
 
   TABLE_COMMENT = 'This table stores a team information'
@@ -12,4 +14,5 @@ class CreateTeams < ActiveRecord::Migration[7.1]
       t.timestamps
     end
   end
+
 end

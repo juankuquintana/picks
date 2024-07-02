@@ -1,0 +1,11 @@
+<section class='container px-4 mx-auto'>
+  <% breadcrumbs = [
+       { title: t('views.admin.fixtures'), path: admin_fixtures_path },
+       { title: @fixture.id, path: admin_fixture_path(@fixture.id) }
+     ] %>
+  <%= render partial: 'shared/admin/breadcrumbs', locals: { breadcrumbs: } %>
+
+  <div class='mt-6'>
+    <%= render 'fixture' %>
+  </div>
+</section>

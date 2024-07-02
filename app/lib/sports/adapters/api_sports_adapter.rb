@@ -20,6 +20,10 @@ module Sports
           ApiSports::Actions::Football::Team::Teams.new.call(league_id, season)
         end
 
+        def get_league_fixtures(league_id, season)
+          ApiSports::Actions::Football::Fixture::Fixtures.new.call(league_id, season)
+        end
+
       end
 
     end

@@ -130,6 +130,5 @@ $ heroku labs:enable runtime-dyno-metadata --app picks
 - Our activity logs hold valuable information related to users and accounts. Think of it as an audit log.
 
 ## Roadmap
-- Sync eurocopa fixtures
 - Create pools
 

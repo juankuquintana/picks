@@ -9,6 +9,7 @@ en:
       accounts: 'Accounts'
       models: 'Models'
       teams: 'Teams'
+      fixtures: 'Fixtures'
       leagues: 'Leagues'
       orders: 'Orders'
       countries: 'Countries'

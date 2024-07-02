@@ -1,0 +1,94 @@
+HTTP/1.1 200 OK
+Date: Mon, 06 Nov 2023 18:53:29 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Upgrade: h2
+Connection: Upgrade
+Content-Length: 86549
+Content-Type: application/json
+X-Request: "https://v3.football.api-sports.io/fixtures?league=4&season=2024"
+
+{
+   "get":"fixtures",
+   "parameters":{
+      "league":"4",
+      "season":"2024"
+   },
+   "errors":[
+
+   ],
+   "results":46,
+   "paging":{
+      "current":1,
+      "total":1
+   },
+   "response":[
+      {
+         "fixture":{
+            "id":1145509,
+            "referee":"Clement Turpin, France",
+            "timezone":"UTC",
+            "date":"2024-06-14T19:00:00+00:00",
+            "timestamp":1718391600,
+            "periods":{
+               "first":1718391600,
+               "second":1718395200
+            },
+            "venue":{
+               "id":20732,
+               "name":"Fußball Arena München",
+               "city":"München"
+            },
+            "status":{
+               "long":"Match Finished",
+               "short":"FT",
+               "elapsed":90
+            }
+         },
+         "league":{
+            "id":4,
+            "name":"Euro Championship",
+            "country":"World",
+            "logo":"https://media.api-sports.io/football/leagues/4.png",
+            "flag":"nil",
+            "season":2024,
+            "round":"Group A - 1"
+         },
+         "teams":{
+            "home":{
+               "id":25,
+               "name":"Germany",
+               "logo":"https://media.api-sports.io/football/teams/25.png",
+               "winner":true
+            },
+            "away":{
+               "id":1108,
+               "name":"Scotland",
+               "logo":"https://media.api-sports.io/football/teams/1108.png",
+               "winner":false
+            }
+         },
+         "goals":{
+            "home":5,
+            "away":1
+         },
+         "score":{
+            "halftime":{
+               "home":3,
+               "away":0
+            },
+            "fulltime":{
+               "home":5,
+               "away":1
+            },
+            "extratime":{
+               "home":"nil",
+               "away":"nil"
+            },
+            "penalty":{
+               "home":"nil",
+               "away":"nil"
+            }
+         }
+      }
+   ]
+}

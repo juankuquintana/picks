@@ -27,7 +27,7 @@ module ApiSports
                       id: entry.dig('team', 'id'),
                       name: entry.dig('team', 'name'),
                       code: entry.dig('team', 'code'),
-                      logo: entry.dig('team', 'logo'),
+                      logo: entry.dig('team', 'logo')
                     )
                 end
               )

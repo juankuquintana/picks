@@ -19,6 +19,7 @@
           <p><%= t('views.admin.accounts') %>: <%= Account.count %> <%= link_to t('views.admin.view'), admin_accounts_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
           <p><%= t('views.admin.leagues') %>: <%= League.count %> <%= link_to t('views.admin.view'), admin_leagues_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
           <p><%= t('views.admin.teams') %>: <%= Team.count %> <%= link_to t('views.admin.view'), admin_teams_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
+          <p><%= t('views.admin.fixtures') %>: <%= Fixture.count %> <%= link_to t('views.admin.view'), admin_fixtures_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
           <p><%= t('views.admin.countries') %>: <%= Country.count %> <%= link_to t('views.admin.view'), admin_countries_path, class: 'font-medium text-blue-600 hover:underline' %> </p>
         </div>
       </div>

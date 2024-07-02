@@ -30,6 +30,16 @@ module ApiSports
       Date.parse(date_string)
     end
 
+    # Takes a date string and returns a Date representation
+    #
+    # @param date_string [String] A Date represented as ISO8601
+    # @return [Date]
+    def parse_date_time(date_string)
+      return nil unless date_string
+
+      DateTime.parse(date_string)
+    end
+
     def extract_defaults(response)
       {
         errors: response['errors'],

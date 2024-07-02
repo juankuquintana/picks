@@ -25,7 +25,12 @@ module ApiSports
                 fixtures: Array(body['response']).map do |entry|
                   ApiSports::Structs::Football::Fixture.new(
                       id: entry.dig('fixture', 'id'),
-                      date: entry.dig('fixture', 'date')
+                      date: parse_date_time(entry.dig('fixture', 'date')),
+                      home_team_id: entry.dig('teams', 'home', 'id'),
+                      away_team_id: entry.dig('teams', 'away', 'id'),
+                      home_team_score: entry.dig('goals', 'home'),
+                      away_team_score: entry.dig('goals', 'away'),
+                      round: entry.dig('league', 'round')
                     )
                 end
               )

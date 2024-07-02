@@ -27,6 +27,12 @@ module Sports
         Sports::Adapters::ApiSportsAdapter.get_league_teams(league_id, season)
       end
 
+      def get_league_fixtures(adapter_key, league_id, season)
+        raise ArgumentError, "Unsupported adapter #{adapter_key}" unless adapter_key == Sports::Adapters::ApiSportsAdapter::KEY
+
+        Sports::Adapters::ApiSportsAdapter.get_league_fixtures(league_id, season)
+      end
+
     end
 
   end

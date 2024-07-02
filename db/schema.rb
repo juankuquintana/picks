@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_210522) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_01_232732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_210522) do
     t.text "flag", comment: "URL of the country flag image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "fixtures", comment: "This table stores a fixture or match information", force: :cascade do |t|
+    t.datetime "datetime", comment: "The date time a match is played"
+    t.integer "home_team_score", comment: "The home team score"
+    t.integer "away_team_score", comment: "The away team score"
+    t.jsonb "adapters", null: false, comment: "Stores the reference IDs of the fixture from our different providers"
+    t.bigint "home_team_id", null: false, comment: "References the home team associated to this fixture"
+    t.bigint "away_team_id", null: false, comment: "References the away team associated to this fixture"
+    t.bigint "round_id", null: false, comment: "References the round associated to this fixture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["away_team_id"], name: "index_fixtures_on_away_team_id"
+    t.index ["home_team_id"], name: "index_fixtures_on_home_team_id"
+    t.index ["round_id", "home_team_id", "away_team_id"], name: "index_fixtures_on_round_id_and_home_team_id_and_away_team_id", unique: true
+    t.index ["round_id"], name: "index_fixtures_on_round_id"
   end
 
   create_table "flipper_features", force: :cascade do |t|
@@ -157,6 +173,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_210522) do
 
   add_foreign_key "activity_logs", "accounts"
   add_foreign_key "activity_logs", "users"
+  add_foreign_key "fixtures", "rounds"
+  add_foreign_key "fixtures", "teams", column: "away_team_id"
+  add_foreign_key "fixtures", "teams", column: "home_team_id"
   add_foreign_key "leagues", "countries"
   add_foreign_key "memberships", "accounts"
   add_foreign_key "memberships", "users"

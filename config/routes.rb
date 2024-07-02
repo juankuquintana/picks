@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :orders, only: %i[index show]
     resources :leagues, only: %i[index show]
     resources :teams, only: %i[index show]
+    resources :fixtures, only: %i[index show]
     resources :countries, only: %i[index]
     resources :users, id: accept_email_pattern, only: %i[index show]
 
