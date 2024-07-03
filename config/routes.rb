@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Home pages
   # -------------------------------------------------
   get 'home' => 'home#index'
+  resources :pools, only: %i[show create]
 
   # User session pages
   # -------------------------------------------------
@@ -38,6 +39,8 @@ Rails.application.routes.draw do
     resources :leagues, only: %i[index show]
     resources :teams, only: %i[index show]
     resources :fixtures, only: %i[index show]
+    resources :pools, only: %i[index]
+    resources :bets, only: %i[index]
     resources :countries, only: %i[index]
     resources :users, id: accept_email_pattern, only: %i[index show]
 

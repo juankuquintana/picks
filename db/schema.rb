@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_232732) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_02_224903) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_232732) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_activity_logs_on_account_id"
     t.index ["user_id"], name: "index_activity_logs_on_user_id"
+  end
+
+  create_table "bets", comment: "This table stores the bets or prediction information", force: :cascade do |t|
+    t.integer "home_team_score", null: false, comment: "Score for the home team"
+    t.integer "away_team_score", null: false, comment: "Score for the away team"
+    t.integer "points", comment: "Points obtained for the bet"
+    t.bigint "fixture_id", null: false, comment: "Fixture associated to this bet"
+    t.bigint "pool_id", null: false, comment: "Pool associated to this bet"
+    t.bigint "user_id", null: false, comment: "User that placed the bet"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fixture_id", "pool_id", "user_id"], name: "index_bets_on_fixture_id_and_pool_id_and_user_id", unique: true
+    t.index ["fixture_id"], name: "index_bets_on_fixture_id"
+    t.index ["pool_id"], name: "index_bets_on_pool_id"
+    t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
   create_table "countries", comment: "This table stores countries related information", force: :cascade do |t|
@@ -131,6 +146,28 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_232732) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "pool_users", comment: "This table stores the relation between pool and users", force: :cascade do |t|
+    t.string "role", limit: 255, null: false, comment: "Role of the user and the pool"
+    t.bigint "pool_id", null: false, comment: "Pool associated to a user"
+    t.bigint "user_id", null: false, comment: "User associated to a pool"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pool_id"], name: "index_pool_users_on_pool_id"
+    t.index ["user_id"], name: "index_pool_users_on_user_id"
+  end
+
+  create_table "pools", comment: "This table stores a pool information", force: :cascade do |t|
+    t.string "name", limit: 255, null: false, comment: "Name of the pool"
+    t.string "code", limit: 20, null: false, comment: "Unique code of the pool for invitations"
+    t.bigint "league_id", null: false, comment: "References the league associated to this pool"
+    t.bigint "round_id", null: false, comment: "Initial round of the league associated to this pool"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_pools_on_code", unique: true
+    t.index ["league_id"], name: "index_pools_on_league_id"
+    t.index ["round_id"], name: "index_pools_on_round_id"
+  end
+
   create_table "rounds", comment: "This table stores the name of the rounds (jornadas) or matchdays of a season", force: :cascade do |t|
     t.string "name", limit: 255, null: false, comment: "The round name"
     t.string "season", null: false, comment: "The season / year (YYYY) of the round"
@@ -173,6 +210,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_232732) do
 
   add_foreign_key "activity_logs", "accounts"
   add_foreign_key "activity_logs", "users"
+  add_foreign_key "bets", "fixtures"
+  add_foreign_key "bets", "pools"
+  add_foreign_key "bets", "users"
   add_foreign_key "fixtures", "rounds"
   add_foreign_key "fixtures", "teams", column: "away_team_id"
   add_foreign_key "fixtures", "teams", column: "home_team_id"
@@ -182,6 +222,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_232732) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "accounts"
   add_foreign_key "orders", "users"
+  add_foreign_key "pool_users", "pools"
+  add_foreign_key "pool_users", "users"
+  add_foreign_key "pools", "leagues"
+  add_foreign_key "pools", "rounds"
   add_foreign_key "rounds", "leagues"
   add_foreign_key "user_identities", "users"
 end

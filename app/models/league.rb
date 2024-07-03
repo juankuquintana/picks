@@ -4,6 +4,7 @@ class League < ApplicationRecord
 
   belongs_to :country
   has_many :rounds, dependent: :destroy
+  has_many :pools, dependent: :destroy
 
   validates :name, :logo, :adapters, presence: true
 

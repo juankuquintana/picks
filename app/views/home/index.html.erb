@@ -3,3 +3,11 @@
 <div class='w-full'>
   <%= render partial: 'shared/application/header' %>
 </div>
+
+<%= form_tag(pools_path, method: 'post', class: 'inline-flex') do %>
+  <div class='flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-none'>
+    <%= text_field_tag :name, '', class: 'form-input py-1.5 w-48 mb-2 sm:mb-0 sm:mr-2', autocomplete: false, placeholder: 'Nombre de la liga', required: true %>
+    <%= select_tag 'league', options_from_collection_for_select(League.all, :id, :name), prompt: 'Selecciona una liga', class: 'form-select w-48 text-sm py-2 mb-2 sm:mb-0 sm:mr-2', required: true %>
+    <%= submit_tag 'Crear Liga', class: 'btn-sm text-white bg-indigo-500 hover:bg-indigo-600 shadow-sm whitespace-nowrap cursor-pointer' %>
+  </div>
+<% end %>

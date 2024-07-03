@@ -23,7 +23,7 @@ module Sports
 
       describe 'when fixture already exists' do
         before do
-          create(:fixture, home_team: @team_1, away_team: @team_2, round: @round, adapters: { Sports::Adapters::ApiSportsAdapter::KEY => 1_145_509 })
+          create(:fixture, home_team: @team1, away_team: @team2, round: @round, adapters: { Sports::Adapters::ApiSportsAdapter::KEY => 1_145_509 })
         end
 
         it 'does not create a fixture' do

@@ -54,6 +54,7 @@ group :test do
   gem 'minitest', '~> 5.22', '>= 5.22.2'
   gem 'minitest-spec-rails'
   gem 'mocha', '~> 2.1'
+  gem 'shoulda', '~> 4.0'
   gem 'timecop'
   gem 'webmock'
 end

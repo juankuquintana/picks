@@ -9,6 +9,8 @@ en:
       accounts: 'Accounts'
       models: 'Models'
       teams: 'Teams'
+      pools: 'Pools'
+      bets: 'Bets'
       fixtures: 'Fixtures'
       leagues: 'Leagues'
       orders: 'Orders'

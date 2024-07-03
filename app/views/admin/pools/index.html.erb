@@ -1,0 +1,12 @@
+<section class='container px-4 mx-auto'>
+  <% breadcrumbs = [
+       { title: t('views.admin.pools'), path: admin_pools_path }
+     ] %>
+  <%= render partial: 'shared/admin/breadcrumbs', locals: { breadcrumbs: } %>
+
+  <div class='mt-6'>
+    <%= render 'pools' %>
+
+    <%= render partial: 'shared/admin/tables/pagination', locals: { items: @pools } %>
+  </div>
+</section>
