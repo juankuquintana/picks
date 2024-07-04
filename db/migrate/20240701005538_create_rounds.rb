@@ -7,6 +7,7 @@ class CreateRounds < ActiveRecord::Migration[7.1]
   def change
     create_table :rounds, comment: TABLE_COMMENT do |t|
       t.string :name, limit: 255, null: false, comment: 'The round name'
+      t.integer :order, null: false, comment: 'The round order within a season'
       t.string :season, null: false, comment: 'The season / year (YYYY) of the round'
       t.references :league, foreign_key: true, null: false, comment: 'References the league associated to this round'
 

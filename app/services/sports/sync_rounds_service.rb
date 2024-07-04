@@ -16,11 +16,12 @@ module Sports
 
     def call
       result = Sports::Adapters.get_league_rounds(adapter_key, league.adapters[adapter_key], season)
-      result.rounds.each do |round_name|
+      result.rounds.each_with_index do |round_name, index|
         round = Round.find_by(league_id: league.id, season:, name: round_name) || Round.new
         round.name = round_name
         round.league = league
         round.season = season
+        round.order = index + 1
         round.save!
       end
     end

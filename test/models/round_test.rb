@@ -12,6 +12,7 @@ class RoundTest < ActiveSupport::TestCase
     subject { build(:round) }
 
     should validate_presence_of(:name)
+    should validate_presence_of(:order)
     should validate_presence_of(:season)
     should validate_uniqueness_of(:name).scoped_to(:season, :league_id).case_insensitive
   end

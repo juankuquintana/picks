@@ -471,7 +471,6 @@ DEPENDENCIES
   sentry-ruby
   service_actor (~> 3.7)
   shoulda (~> 4.0)
-  shoulda-matchers
   sidekiq
   sidekiq-cron
   simpleconfig (~> 2.0, >= 2.0.1)

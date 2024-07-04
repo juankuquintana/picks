@@ -18,6 +18,13 @@ module Sports
         end
       end
 
+      it 'defines the order correctly for the rounds' do
+        described_class.call(Sports::Adapters::ApiSportsAdapter::KEY, @league, 2024)
+
+        assert_equal @league.rounds.first.name, 'Group A - 1'
+        assert_equal @league.rounds.first.order, 1
+      end
+
       describe 'when round already exists' do
         before do
           create(:round, season: 2024, league_id: @league.id, name: 'Group A - 1')
