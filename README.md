@@ -52,6 +52,22 @@ You can run the database seeds with the following command:
 $ rails db:seed
 ```
 
+## Local development data
+
+You can set your application with initial data with the following commands:
+
+```bash
+$ rails c
+```
+
+```ruby
+Sports::SyncLeagueService.call(Sports::Adapters::ApiSportsAdapter::KEY, ApiSports::Extensions::LigaMx::ID)
+league = League.last
+Sports::SyncTeamsService.call(Sports::Adapters::ApiSportsAdapter::KEY, league, 2024)
+Sports::SyncRoundsService.call(Sports::Adapters::ApiSportsAdapter::KEY, league, 2024)
+Sports::SyncFixturesService.call(Sports::Adapters::ApiSportsAdapter::KEY, league, 2024)
+```
+
 ## Architecture
 
 ### Feature flags
