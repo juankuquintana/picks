@@ -10,10 +10,10 @@ class FixtureQuery
 
   def self.league_nearest_fixture(league_id)
     scope.joins(round: :league)
-         .where(rounds: { league_id: })
-         .where('fixtures.datetime >= ?', Time.now)
-         .order('fixtures.datetime ASC')
-         .first
+        .where(rounds: { league_id: })
+        .where('fixtures.datetime >= ?', Time.zone.now)
+        .order('fixtures.datetime ASC')
+        .first
   end
 
 end

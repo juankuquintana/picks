@@ -23,7 +23,7 @@ module Sports
         round.season = season
         round.order = index + 1
 
-        if ApiSports::Extensions::LigaMx::ID == league.adapters[adapter_key]
+        if league.adapters[adapter_key] == ApiSports::Extensions::LigaMx::ID
           if round_name.start_with?(ApiSports::Extensions::LigaMx::SEASON_APERTURA)
             round.group = 1
           elsif round_name.start_with?(ApiSports::Extensions::LigaMx::SEASON_CLAUSURA)

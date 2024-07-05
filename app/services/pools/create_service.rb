@@ -16,7 +16,7 @@ module Pools
 
     def call
       fixture = FixtureQuery.league_nearest_fixture(league_id)
-      raise ActiveRecord::RecordNotFound, "Cannot create a pool for a league without configured fixtures" unless fixture
+      raise ActiveRecord::RecordNotFound, 'Cannot create a pool for a league without configured fixtures' unless fixture
 
       pool = nil
       round = RoundQuery.find_first_round_from_round(fixture.round)
