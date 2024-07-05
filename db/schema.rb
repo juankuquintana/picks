@@ -172,6 +172,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_02_224903) do
     t.string "name", limit: 255, null: false, comment: "The round name"
     t.integer "order", null: false, comment: "The round order within a season"
     t.string "season", null: false, comment: "The season / year (YYYY) of the round"
+    t.integer "group", comment: "Group to which the round belongs to, helpful when leagues have multiple seasons per year"
     t.bigint "league_id", null: false, comment: "References the league associated to this round"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

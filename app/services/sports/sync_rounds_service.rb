@@ -16,13 +16,25 @@ module Sports
 
     def call
       result = Sports::Adapters.get_league_rounds(adapter_key, league.adapters[adapter_key], season)
-      result.rounds.each_with_index do |round_name, index|
+      result.rounds.map.with_index do |round_name, index|
         round = Round.find_by(league_id: league.id, season:, name: round_name) || Round.new
         round.name = round_name
         round.league = league
         round.season = season
         round.order = index + 1
+
+        if ApiSports::Extensions::LigaMx::ID == league.adapters[adapter_key]
+          if round_name.start_with?(ApiSports::Extensions::LigaMx::SEASON_APERTURA)
+            round.group = 1
+          elsif round_name.start_with?(ApiSports::Extensions::LigaMx::SEASON_CLAUSURA)
+            round.group = 2
+          else
+            raise StandardError, "Unsupported round name: #{round_name} for league: #{league.adapters[adapter_key]}"
+          end
+        end
+
         round.save!
+        round
       end
     end
 

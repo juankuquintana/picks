@@ -36,6 +36,22 @@ module Sports
           end
         end
       end
+
+      describe 'when ApiSports' do
+        describe 'when LigaMx' do
+          before do
+            @league = create(:league, adapters: { Sports::Adapters::ApiSportsAdapter::KEY => ApiSports::Extensions::LigaMx::ID })
+            stub_request(ApiSports::Action::METHOD_GET, /#{ApiSports::Client::DEFAULT_BASE_URL}/o)
+                .to_return(read_fixture('api_sports/football/get_rounds/success_200_liga_mx.http'))
+          end
+
+          it 'does not create a round' do
+            rounds = described_class.call(Sports::Adapters::ApiSportsAdapter::KEY, @league, 2024).result
+            assert_equal rounds.first.group, 1
+            assert_equal rounds.last.group, 2
+          end
+        end
+      end
     end
 
   end

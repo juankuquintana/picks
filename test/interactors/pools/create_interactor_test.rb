@@ -9,7 +9,8 @@ module Pools
       before do
         @user = create(:user_with_account)
         @league = create(:league)
-        create(:round, league: @league, season: 2024)
+        round = create(:round, league: @league, season: 2024)
+        create(:fixture, round:, datetime: DateTime.now + 5.minutes)
       end
 
       it 'succeeds' do

@@ -15,9 +15,11 @@ module Pools
     end
 
     def call
-      pool = nil
-      round = RoundQuery.find_first_round_of_last_season(league_id)
+      fixture = FixtureQuery.league_nearest_fixture(league_id)
+      raise ActiveRecord::RecordNotFound, "Cannot create a pool for a league without configured fixtures" unless fixture
 
+      pool = nil
+      round = RoundQuery.find_first_round_from_round(fixture.round)
       ApplicationRecord.transaction do
         pool = Pool.create!(name:, league_id:, code: SecureRandom.hex(10), round:)
         PoolUser.create!(user:, pool:, role: PoolUser::ROLE_ADMIN)

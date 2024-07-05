@@ -12,4 +12,20 @@ class FixtureQueryTest < ActiveSupport::TestCase
     end
   end
 
+  describe '#league_nearest_fixture' do
+    before do
+      @round = create(:round)
+    end
+
+    it 'succeeds' do
+      create(:fixture, datetime: DateTime.now + 2.minutes)
+      create(:fixture, round: @round, datetime: DateTime.now + 5.minutes)
+      create(:fixture, round: @round, datetime: DateTime.now - 5.minutes)
+      fixture = create(:fixture, round: @round, datetime: DateTime.now + 3.minutes)
+
+      found_fixture = described_class.league_nearest_fixture(@round.league.id)
+      assert_equal fixture, found_fixture, 'fixture not found'
+    end
+  end
+
 end

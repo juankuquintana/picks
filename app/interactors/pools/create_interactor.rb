@@ -14,7 +14,8 @@ module Pools
 
     def call
       result.pool = Pools::CreateService.call(name, league_id, user)
-    rescue ActiveRecord::RecordInvalid => exception
+    rescue ActiveRecord::RecordInvalid,
+           ActiveRecord::RecordNotFound => exception
       Picks::Logger.loge('interactors.pools.create_interactor.failed', exception:)
       Picks::Error.notify_exception(exception)
 
