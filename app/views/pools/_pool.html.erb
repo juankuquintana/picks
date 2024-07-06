@@ -1,0 +1,23 @@
+<span class='text-default-gray'><%= round.league.name %></span>
+<% fixtures.each do |fixture| %>
+  <div class='flex flex-col items-center'>
+    <div class='flex flex-row items-center'>
+      <img alt='jersey' src='<%= fixture.home_team.logo %>' style='width:50px; height:50px; border-radius: 50%;'>
+      <img alt='jersey' src='<%= fixture.away_team.logo %>' style='width:50px; height:50px; border-radius: 50%;'>
+    </div>
+    <div class='text-center'>
+      <h2 class='text-sm lg:text-xl'>
+        <span class='font-bold'><%= fixture.home_team_score %></span>
+        <span class='font-bold'><%= fixture.home_team.name %></span>
+        <span class='mx-1'>vs</span>
+        <span class='font-bold'><%= fixture.away_team.name %></span>
+        <span class='font-bold'><%= fixture.away_team_score %></span>
+      </h2>
+      <div class='mt-1 text-xs lg:text-sm'>
+        <span class='font-medium'>
+          <%= fixture.datetime.in_time_zone('America/Mexico_City').strftime('%e %b %Y - %H:%M') %>
+        </span>
+      </div>
+    </div>
+  </div>
+<% end %>

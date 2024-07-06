@@ -16,4 +16,8 @@ class FixtureQuery
         .first
   end
 
+  def self.by_round(round)
+    scope.where(round:).order('fixtures.datetime ASC')
+  end
+
 end

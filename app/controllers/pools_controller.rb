@@ -2,6 +2,10 @@
 
 class PoolsController < AuthenticatedController
 
+  def show
+    @pool = Pool.find(params[:pool_id])
+  end
+
   def create
     result = Pools::CreateInteractor.call(name: params[:name], league_id: params[:league], user: current_user)
 

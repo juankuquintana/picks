@@ -42,4 +42,24 @@ class PoolsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  describe 'GET /pools/:pool_id' do
+    it 'succeeds' do
+      user = create(:user_with_account)
+      sign_in_via_oauth_as(user)
+
+      pool = create(:pool)
+      create(:pool_user, pool:, user:)
+
+      get pool_path(pool.id)
+    end
+
+    it 'routes to /pools/:pool_id' do
+      assert_routing '/pools/3', controller: 'pools', action: 'show', id: '3'
+    end
+
+    it_requires_authentication do
+      get pool_path(3)
+    end
+  end
+
 end

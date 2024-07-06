@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :accounts, through: :memberships
   has_many :activity_logs, dependent: :destroy
   has_many :user_identities, dependent: :destroy
+  has_many :pool_users, dependent: :destroy
   has_many :pools, through: :pool_users, dependent: :destroy
   has_many :bets, dependent: :destroy
 

@@ -8,4 +8,8 @@ class League < ApplicationRecord
 
   validates :name, :logo, :adapters, presence: true
 
+  def adapter_data
+    adapters.first
+  end
+
 end
