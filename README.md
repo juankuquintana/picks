@@ -65,7 +65,7 @@ Sports::SyncLeagueService.call(Sports::Adapters::ApiSportsAdapter::KEY, ApiSport
 league = League.last
 Sports::SyncTeamsService.call(Sports::Adapters::ApiSportsAdapter::KEY, league, 2024)
 Sports::SyncRoundsService.call(Sports::Adapters::ApiSportsAdapter::KEY, league, 2024)
-Sports::SyncFixturesService.call(Sports::Adapters::ApiSportsAdapter::KEY, league, 2024)
+Sports::SyncLeagueFixturesService.call(Sports::Adapters::ApiSportsAdapter::KEY, league, 2024)
 ```
 
 ## Architecture

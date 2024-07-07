@@ -10,9 +10,10 @@ module ApiSports
           #
           # @param league [BigDecimal] ID of the league
           # @param season [String] Season of the leage (4 digits) YYYY
+          # @param date [Date] Date of the fixtures to return
           # @return [ApiSports::Structs::Football::FixturesResult] The result of the endpoint.
-          def call(league, season)
-            params = { league:, season: }
+          def call(league = nil, season = nil, date = nil)
+            params = { league:, season:, date: date&.strftime('%Y-%m-%d') }.compact
             response = execute(METHOD_GET, "/fixtures?#{URI.encode_www_form(params)}", {})
             parse_response(response.body)
           end

@@ -15,13 +15,13 @@ module ApiSports
 
           describe '#call' do
             it 'makes the correct request' do
-              described_class.new.call(1, 2024)
+              described_class.new.call(1, 2024, nil)
 
               assert_requested ApiSports::Action::METHOD_GET, /#{ApiSports::Client::DEFAULT_BASE_URL}/o, times: 1
             end
 
             it 'returns a ApiSports::Structs::Football::FixturesResult' do
-              result = described_class.new.call(1, 2024)
+              result = described_class.new.call(1, 2024, nil)
 
               assert_kind_of ApiSports::Structs::Football::FixturesResult, result
               assert_equal result.fixtures.length, 46

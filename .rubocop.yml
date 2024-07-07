@@ -241,6 +241,10 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Max: 15
 
+Naming/AccessorMethodName:
+  Exclude:
+    - 'app/lib/sports/adapters/api_sports_adapter.rb'
+
 Naming/RescuedExceptionsVariableName:
   PreferredName: exception
 

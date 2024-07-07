@@ -7,28 +7,23 @@ module Sports
 
     describe '#call' do
       before do
-        @league = create(:league)
-        @round = create(:round, league: @league, name: 'Group A - 1')
-        @team1 = create(:team, adapters: { Sports::Adapters::ApiSportsAdapter::KEY => 25 })
-        @team2 = create(:team, adapters: { Sports::Adapters::ApiSportsAdapter::KEY => 1108 })
+        @fixture = create(:fixture, adapters: { Sports::Adapters::ApiSportsAdapter::KEY => 1_158_131 })
         stub_request(ApiSports::Action::METHOD_GET, /#{ApiSports::Client::DEFAULT_BASE_URL}/o)
-            .to_return(read_fixture('api_sports/football/get_fixtures/success_200_single.http'))
+            .to_return(read_fixture('api_sports/football/get_fixtures/success_200_today.http'))
       end
 
-      it 'creates a fixture' do
-        assert_difference -> { Fixture.count }, 1 do
-          described_class.call(Sports::Adapters::ApiSportsAdapter::KEY, @league, 2024)
-        end
+      it 'updates the fixture' do
+        described_class.call(Sports::Adapters::ApiSportsAdapter::KEY)
+
+        @fixture.reload
+        assert_equal @fixture.home_team_score, 2
+        assert_equal @fixture.away_team_score, 3
       end
 
-      describe 'when fixture already exists' do
-        before do
-          create(:fixture, home_team: @team1, away_team: @team2, round: @round, adapters: { Sports::Adapters::ApiSportsAdapter::KEY => 1_145_509 })
-        end
-
+      describe 'when fixture does not exists' do
         it 'does not create a fixture' do
           assert_no_difference -> { Fixture.count } do
-            described_class.call(Sports::Adapters::ApiSportsAdapter::KEY, @league, 2024)
+            described_class.call(Sports::Adapters::ApiSportsAdapter::KEY)
           end
         end
       end

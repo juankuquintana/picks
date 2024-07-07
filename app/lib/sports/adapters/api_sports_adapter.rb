@@ -26,7 +26,11 @@ module Sports
         end
 
         def get_league_fixtures(league_id, season)
-          ApiSports::Actions::Football::Fixture::Fixtures.new.call(league_id, season)
+          ApiSports::Actions::Football::Fixture::Fixtures.new.call(league_id, season, nil)
+        end
+
+        def get_today_fixtures
+          ApiSports::Actions::Football::Fixture::Fixtures.new.call(nil, nil, Time.zone.today)
         end
 
       end

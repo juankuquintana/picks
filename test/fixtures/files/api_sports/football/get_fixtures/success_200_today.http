@@ -1,0 +1,92 @@
+HTTP/1.1 200 OK
+Date: Mon, 06 Nov 2023 18:53:29 GMT
+Server: Apache/2.4.52 (Ubuntu)
+Upgrade: h2
+Connection: Upgrade
+Content-Length: 1881
+Content-Type: application/json
+X-Request: "https://v3.football.api-sports.io/fixtures?date=2024-07-06"
+
+{
+  "get":"fixtures",
+  "parameters":{
+    "date":"2024-07-06"
+  },
+  "errors":[
+  ],
+  "results":658,
+  "paging":{
+    "current":1,
+    "total":1
+  },
+  "response":[
+    {
+      "fixture":{
+        "id":1158131,
+        "referee":"G. Monzón",
+        "timezone":"UTC",
+        "date":"2024-07-06T00:00:00+00:00",
+        "timestamp":1720224000,
+        "periods":{
+          "first":1720224000,
+          "second":1720227600
+        },
+        "venue":{
+          "id":41,
+          "name":"Estadio Nuevo Monumental",
+          "city":"Rafaela, Provincia de Santa Fe"
+        },
+        "status":{
+          "long":"Match Finished",
+          "short":"FT",
+          "elapsed":90
+        }
+      },
+      "league":{
+        "id":129,
+        "name":"Primera Nacional",
+        "country":"Argentina",
+        "logo":"https://media.api-sports.io/football/leagues/129.png",
+        "flag":"https://media.api-sports.io/flags/ar.svg",
+        "season":2024,
+        "round":"Regular Season - 22"
+      },
+      "teams":{
+        "home":{
+          "id":465,
+          "name":"Atletico DE Rafaela",
+          "logo":"https://media.api-sports.io/football/teams/465.png",
+          "winner":"nil"
+        },
+        "away":{
+          "id":1928,
+          "name":"Gimnasia Y Tiro",
+          "logo":"https://media.api-sports.io/football/teams/1928.png",
+          "winner":"nil"
+        }
+      },
+      "goals":{
+        "home":2,
+        "away":3
+      },
+      "score":{
+        "halftime":{
+          "home":0,
+          "away":0
+        },
+        "fulltime":{
+          "home":0,
+          "away":0
+        },
+        "extratime":{
+          "home":"nil",
+          "away":"nil"
+        },
+        "penalty":{
+          "home":"nil",
+          "away":"nil"
+        }
+      }
+    }
+  ]
+}
