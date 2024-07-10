@@ -26,8 +26,8 @@ class OrderProcessWorkerTest < ActiveSupport::TestCase
 
       order = create(:order)
 
-      Picks::Logger.expects(:logi).with('workers.order_process_worker.started', order_id: order.id)
-      Picks::Logger.expects(:logi).with('workers.order_process_worker.completed', order_id: order.id)
+      Picks::Logger.expects(:logi).with('jobs.order_process_worker.started', order_id: order.id)
+      Picks::Logger.expects(:logi).with('jobs.order_process_worker.completed', order_id: order.id)
 
       described_class.new.perform(order.id)
     end

@@ -12,4 +12,8 @@ class League < ApplicationRecord
     adapters.first
   end
 
+  def most_recent_season
+    rounds.order('season ASC').last&.season
+  end
+
 end

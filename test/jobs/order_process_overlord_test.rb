@@ -23,8 +23,8 @@ class OrderProcessOverlordTest < ActiveSupport::TestCase
     end
 
     it 'logs the worker' do
-      Picks::Logger.expects(:logi).with('workers.order_process_overlord.started')
-      Picks::Logger.expects(:logi).with('workers.order_process_overlord.completed')
+      Picks::Logger.expects(:logi).with('jobs.order_process_overlord.started')
+      Picks::Logger.expects(:logi).with('jobs.order_process_overlord.completed')
 
       described_class.new.perform
     end

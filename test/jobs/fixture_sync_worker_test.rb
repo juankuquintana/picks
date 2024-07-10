@@ -22,8 +22,8 @@ class FixtureSyncWorkerTest < ActiveSupport::TestCase
     it 'logs the worker' do
       Sports::SyncFixturesService.stubs(:call)
 
-      Picks::Logger.expects(:logi).with('workers.fixture_sync_worker.started')
-      Picks::Logger.expects(:logi).with('workers.fixture_sync_worker.completed')
+      Picks::Logger.expects(:logi).with('jobs.fixture_sync_worker.started')
+      Picks::Logger.expects(:logi).with('jobs.fixture_sync_worker.completed')
 
       described_class.new.perform
     end

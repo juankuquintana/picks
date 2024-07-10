@@ -3,3 +3,7 @@ fixture_sync_worker:
   class: "FixtureSyncWorker"
   queue: default
 
+league_fixtures_sync_overlord:
+  cron: "5 * * * *"
+  class: "LeagueFixturesSyncOverlord"
+  queue: default
