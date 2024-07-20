@@ -20,4 +20,10 @@ class FixtureTest < ActiveSupport::TestCase
     assert_includes fixture.errors[:adapters], "can't be blank"
   end
 
+  context 'validations' do
+    subject { build(:fixture) }
+
+    should define_enum_for(:state).backed_by_column_of_type(:string)
+  end
+
 end

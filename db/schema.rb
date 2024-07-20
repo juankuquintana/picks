@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_02_224903) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_10_195519) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_02_224903) do
     t.bigint "round_id", null: false, comment: "References the round associated to this fixture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "score", comment: "Stores a detailed summary of a fixture scores"
+    t.string "state", null: false, comment: "Status of a fixture"
     t.index ["away_team_id"], name: "index_fixtures_on_away_team_id"
     t.index ["home_team_id"], name: "index_fixtures_on_home_team_id"
     t.index ["round_id", "home_team_id", "away_team_id"], name: "index_fixtures_on_round_id_and_home_team_id_and_away_team_id", unique: true

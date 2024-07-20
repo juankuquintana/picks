@@ -9,6 +9,7 @@ class ActivityLog < ApplicationRecord
 
   SYSTEM_ACTOR    = 'system'
 
+  BET_INSERT      = 'bet.insert'
   POOL_CREATE     = 'pool.create'
   SESSION_CREATE  = 'session.create'
   SESSION_DESTROY = 'session.destroy'

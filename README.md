@@ -147,4 +147,5 @@ $ heroku labs:enable runtime-dyno-metadata --app picks
 
 ## Roadmap
 - Permitir hacer una apuesta
+  - Guardar el status de un fixture
 - Listar Quinielas y permitir crearlas

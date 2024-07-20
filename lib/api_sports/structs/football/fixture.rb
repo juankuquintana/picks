@@ -19,6 +19,10 @@ module ApiSports
         attr_accessor :away_team_score
         # @return [String]
         attr_accessor :round
+        # @return [String]
+        attr_accessor :short_status
+        # @return [Hash]
+        attr_accessor :score
 
       end
     end

@@ -27,6 +27,8 @@ module ApiSports
                   ApiSports::Structs::Football::Fixture.new(
                       id: entry.dig('fixture', 'id'),
                       date: parse_date_time(entry.dig('fixture', 'date')),
+                      short_status: entry.dig('fixture', 'status', 'short'),
+                      score: entry.dig('score'),
                       home_team_id: entry.dig('teams', 'home', 'id'),
                       away_team_id: entry.dig('teams', 'away', 'id'),
                       home_team_score: entry.dig('goals', 'home'),
