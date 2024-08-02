@@ -17,13 +17,13 @@ module Sports
         next unless fixture
 
         fixture.update!(
-          home_team_score: struct.home_team_score,
-          away_team_score: struct.away_team_score,
-          state: state(struct.short_status),
-          score: {
-            penalties: struct.score['penalty']
-          }.compact
-        )
+            home_team_score: struct.home_team_score,
+            away_team_score: struct.away_team_score,
+            state: state(struct.short_status),
+            score: {
+              penalties: struct.score['penalty']
+            }.compact
+          )
       end
     end
 

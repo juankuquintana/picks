@@ -19,7 +19,7 @@ module Bets
     end
 
     def call
-      pool = @user.pools.where(id: @pool_id).take
+      pool = @user.pools.find_by(id: @pool_id)
       raise ActiveRecord::RecordNotFound, 'Pool not found' unless pool
 
       fixture = Fixture.find(@fixture_id)

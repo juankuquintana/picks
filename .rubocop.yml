@@ -407,6 +407,9 @@ Rails/MigrationClassName:
 Rails/NegateInclude:
   Enabled: true
 
+Rails/NotNullColumn:
+  Enabled: false
+
 Rails/Pluck:
   Enabled: true
 

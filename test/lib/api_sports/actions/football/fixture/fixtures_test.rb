@@ -34,6 +34,7 @@ module ApiSports
               assert_equal fixture.home_team_score, 5
               assert_equal fixture.away_team_id, 1108
               assert_equal fixture.away_team_score, 1
+              assert_equal fixture.score, 1
             end
           end
 
