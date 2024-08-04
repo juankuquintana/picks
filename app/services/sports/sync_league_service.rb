@@ -13,7 +13,7 @@ module Sports
     end
 
     def call
-      result = Sports::Adapters.get_league(adapter_key, id)
+      result = Sports::Adapters.get_current_league(adapter_key, id)
       struct = result.leagues.first
 
       country = Country.find_by(code: struct.country.code) || Country.find_by(name: struct.country.name) || Country.new
@@ -27,6 +27,8 @@ module Sports
       league.logo = struct.logo
       league.adapters[adapter_key] = id
       league.country = country
+      league.season_start = struct.season_start
+      league.season_end = struct.season_end
       league.save!
     end
 

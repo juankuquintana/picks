@@ -15,6 +15,12 @@ module Sports
         Sports::Adapters::ApiSportsAdapter.get_league(id)
       end
 
+      def get_current_league(adapter_key, id)
+        raise ArgumentError, "Unsupported adapter #{adapter_key}" unless adapter_key == Sports::Adapters::ApiSportsAdapter::KEY
+
+        Sports::Adapters::ApiSportsAdapter.get_current_league(id)
+      end
+
       def get_league_rounds(adapter_key, league_id, season)
         raise ArgumentError, "Unsupported adapter #{adapter_key}" unless adapter_key == Sports::Adapters::ApiSportsAdapter::KEY
 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # -------------------------------------------------
   get 'home' => 'home#index'
   resources :pools, only: %i[show create]
+  resources :leagues, only: %i[index]
 
   # User session pages
   # -------------------------------------------------

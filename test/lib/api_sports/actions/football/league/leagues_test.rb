@@ -29,6 +29,8 @@ module ApiSports
               assert_kind_of ApiSports::Structs::League, league
               assert_equal league.name, 'Euro Championship'
               assert_equal league.logo, 'https://media.api-sports.io/football/leagues/4.png'
+              assert_equal league.season_start, Date.new(2024, 6, 14)
+              assert_equal league.season_end, Date.new(2024, 7, 2)
 
               country = league.country
               assert_kind_of ApiSports::Structs::Country, country

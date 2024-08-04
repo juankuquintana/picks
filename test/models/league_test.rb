@@ -30,4 +30,28 @@ class LeagueTest < ActiveSupport::TestCase
     end
   end
 
+  describe '#ongoing' do
+    it 'succeeds' do
+      league = create(:league, season_start: Time.zone.today - 5.days, season_end: Time.zone.today + 5.days)
+      assert league.ongoing
+
+      league.season_start = Time.zone.today + 1.day
+      assert_equal league.ongoing, false
+    end
+  end
+
+  describe 'scope#ongoing' do
+    before do
+      @league = create(:league, season_start: Time.zone.today - 5.days, season_end: Time.zone.today + 5.days)
+      @league2 = create(:league, season_start: Time.zone.today, season_end: Time.zone.today + 5.days)
+      create(:league, season_start: Time.zone.today - 6.days, season_end: Time.zone.today - 5.days)
+      create(:league, season_start: Time.zone.today + 1.day, season_end: Time.zone.today + 5.days)
+    end
+
+    it 'succeeds' do
+      leagues = League.ongoing
+      assert_equal leagues.to_a, [@league, @league2]
+    end
+  end
+
 end

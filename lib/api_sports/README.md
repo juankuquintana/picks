@@ -3,5 +3,7 @@
 ## Helpful information
 
 ### Leagues IDs
-- Eurocopa - 4
-- Liga MX - 262
+- World Cup -> 1
+- Champions League -> 2
+- Eurocopa -> 4
+- Liga MX -> 262

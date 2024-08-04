@@ -14,6 +14,10 @@ module ApiSports
       attr_accessor :logo
       # @return [ApiSports::Structs::Country]
       attr_accessor :country
+      # @return [Date]
+      attr_accessor :season_start
+      # @return [Date]
+      attr_accessor :season_end
 
     end
   end

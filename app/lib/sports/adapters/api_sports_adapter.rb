@@ -12,6 +12,10 @@ module Sports
           ApiSports::Actions::Football::League::Leagues.new.call(id)
         end
 
+        def get_current_league(id)
+          ApiSports::Actions::Football::League::Leagues.new.call(id, current: true)
+        end
+
         def get_league_rounds(league_id, season)
           ApiSports::Actions::Football::Fixture::Rounds.new.call(league_id, season)
         end

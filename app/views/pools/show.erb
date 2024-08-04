@@ -1,0 +1,7 @@
+<%= render partial: 'shared/application/sidebar' %>
+
+<div class='w-full'>
+  <%= render partial: 'shared/application/header' %>
+
+  <%= render partial: 'pools/pool', locals: { pool: @pool, round: @round, fixtures: @fixtures } %>
+</div>

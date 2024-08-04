@@ -12,8 +12,6 @@
   <% end %>
 
   <% if @pools.size > 1 %>
-    <%= render partial: 'league', locals: { pools: @pools } %>
   <% elsif @pools.size == 1 %>
-    <%= render partial: 'pools/pool', locals: { round: @round, fixtures: @fixtures } %>
   <% end %>
 </div>
