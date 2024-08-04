@@ -9,12 +9,15 @@ class League < ApplicationRecord
   validates :name, :logo, :adapters, presence: true
   validates :state, presence: true
 
+  scope :active, -> { where(state: STATE_ACTIVE) }
   scope :ongoing, -> { where('season_start <= ? AND season_end >= ?', Time.zone.today, Time.zone.today) }
 
-  STATE_ACTIVE = 'active'
+  STATE_ACTIVE   = 'active'
+  STATE_INACTIVE = 'inactive'
 
   enum state: {
-    active: STATE_ACTIVE
+    active: STATE_ACTIVE,
+    inactive: STATE_INACTIVE
   }
 
   def adapter_data

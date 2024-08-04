@@ -7,7 +7,7 @@ class LeagueFixturesSyncOverlord
   def perform
     Picks::Logger.logi('jobs.league_fixtures_sync_overlord.started')
 
-    League.find_each do |league|
+    League.active.each do |league|
       LeagueFixturesSyncWorker.perform_async(league.id)
     end
 
