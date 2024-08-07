@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_02_195519) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_09_213333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -113,7 +113,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_02_195519) do
     t.string "state", default: "active", null: false, comment: "State (status) of a league"
     t.date "season_start", comment: "Date the upcoming or last season starts for a league"
     t.date "season_end", comment: "Date the upcoming or last season ends for a league"
+    t.string "parameterized_name", null: false, comment: "The parameterized name of a league"
     t.index ["country_id"], name: "index_leagues_on_country_id"
+    t.index ["parameterized_name"], name: "index_leagues_on_parameterized_name", unique: true
   end
 
   create_table "memberships", comment: "This table stores memberships which associates users and accounts", force: :cascade do |t|
@@ -181,8 +183,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_02_195519) do
     t.bigint "league_id", null: false, comment: "References the league associated to this round"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "parameterized_name", null: false, comment: "The parameterized name of a round"
     t.index ["league_id"], name: "index_rounds_on_league_id"
     t.index ["name", "season", "league_id"], name: "index_rounds_on_name_and_season_and_league_id", unique: true
+    t.index ["parameterized_name", "season", "league_id"], name: "index_rounds_on_parameterized_name_and_season_and_league_id", unique: true
   end
 
   create_table "teams", comment: "This table stores a team information", force: :cascade do |t|
@@ -192,6 +196,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_02_195519) do
     t.jsonb "adapters", null: false, comment: "Stores the reference IDs of the team from our different providers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "parameterized_name", null: false, comment: "The parameterized name of a team"
+    t.index ["parameterized_name"], name: "index_teams_on_parameterized_name", unique: true
   end
 
   create_table "user_identities", comment: "This table stores the user identity providers associated to a user for authentication", force: :cascade do |t|

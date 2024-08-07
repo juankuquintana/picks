@@ -13,6 +13,7 @@ class Team < ApplicationRecord
            dependent: :destroy,
            inverse_of: :away_team
 
-  validates :name, :adapters, presence: true
+  validates :name, :parameterized_name, :adapters, presence: true
+  validates :parameterized_name, uniqueness: { case_sensitive: false }
 
 end

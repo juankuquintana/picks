@@ -3,6 +3,9 @@
 FactoryBot.define do
   factory :league do
     name { Faker::Sports::Football.competition }
+    sequence :parameterized_name do |n|
+      "#{Faker::Sports::Football.competition} #{n}".parameterize
+    end
     logo { Faker::Company.logo }
     state { League::STATE_ACTIVE }
     season_start { Time.zone.today + 1.year }

@@ -19,6 +19,7 @@ module Sports
       result.rounds.map.with_index do |round_name, index|
         round = Round.find_by(league_id: league.id, season:, name: round_name) || Round.new
         round.name = round_name
+        round.parameterized_name = round_name.parameterize
         round.league = league
         round.season = season
         round.order = index + 1

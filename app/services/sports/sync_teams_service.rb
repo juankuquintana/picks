@@ -19,6 +19,7 @@ module Sports
       result.teams.each do |struct|
         team = TeamQuery.find_by_adapter_reference(adapter_key, struct.id) || Team.new
         team.name = struct.name
+        team.parameterized_name = struct.name.parameterize
         team.logo = struct.logo
         team.code = struct.code
         team.adapters = { adapter_key => struct.id }

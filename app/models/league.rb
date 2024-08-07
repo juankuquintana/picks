@@ -6,8 +6,9 @@ class League < ApplicationRecord
   has_many :rounds, dependent: :destroy
   has_many :pools, dependent: :destroy
 
-  validates :name, :logo, :adapters, presence: true
+  validates :name, :parameterized_name, :logo, :adapters, presence: true
   validates :state, presence: true
+  validates :parameterized_name, uniqueness: { case_sensitive: false }
 
   scope :active, -> { where(state: STATE_ACTIVE) }
   scope :ongoing, -> { where('season_start <= ? AND season_end >= ?', Time.zone.today, Time.zone.today) }

@@ -24,6 +24,7 @@ module Sports
 
       league = LeagueQuery.find_by_adapter_reference(adapter_key, id) || League.new(adapters: {})
       league.name = struct.name
+      league.parameterized_name = struct.name.parameterize
       league.logo = struct.logo
       league.adapters[adapter_key] = id
       league.country = country

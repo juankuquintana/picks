@@ -57,8 +57,8 @@ class LeagueTest < ActiveSupport::TestCase
 
     describe '#active' do
       before do
-        @league = create(:league, state: STATE_ACTIVE)
-        create(:league, state: STATE_INACTIVE)
+        @league = create(:league, state: League::STATE_ACTIVE)
+        create(:league, state: League::STATE_INACTIVE)
       end
 
       it 'succeeds' do

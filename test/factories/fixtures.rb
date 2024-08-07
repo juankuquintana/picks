@@ -8,7 +8,7 @@ FactoryBot.define do
     away_team_score { 0 }
     state { Fixture::STATE_NOT_STARTED }
 
-    association :round
+    association :round, factory: :round
     association :home_team, factory: :team
     association :away_team, factory: :team
   end
