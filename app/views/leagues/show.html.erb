@@ -1,0 +1,51 @@
+<%= render partial: 'shared/application/sidebar' %>
+
+<div class='w-full'>
+  <%= render partial: 'shared/application/header' %>
+
+  <div class='flex flex-col'>
+    <div class='flex flex-col items-center mb-10'>
+      <img alt='league-logo' src='<%= @league.logo %>' style='width:50px; height:50px;'>
+      <span class='font-bold ml-5'><%= @league.name %></span>
+
+      <%= form_with url: league_leagues_path(@league.id), method: :get do |form| %>
+        <%= form.select 'round', options_from_collection_for_select(@rounds, :id, :name, @round.id), {}, { class: 'form-select w-48 text-sm py-2 mb-2 sm:mb-0 sm:mr-2', onchange: 'this.form.submit();' } %>
+      <% end %>
+
+      <div>
+        <% @fixtures.each do |fixture| %>
+          <div class='flex flex-col'>
+            <div class='flex flex-row items-center mb-10'>
+              <div class='flex flex-col items-center w-full'>
+                <div class='flex flex-row text-center w-1/5'>
+                  <div class='flex flex-1 flex-col w-full items-center'>
+                    <img alt='jersey' src='<%= fixture.home_team.logo %>' style='width:50px; height:50px; border-radius: 50%;'>
+                    <div class='flex flex-row'>
+                      <span class='font-bold'><%= fixture.home_team_score %></span>
+                      <span class='font-bold'><%= fixture.home_team.name %></span>
+                    </div>
+                  </div>
+                  <div class='flex-1 w-full'>
+                    <span class='mx-2 mt-8'>vs</span>
+                  </div>
+                  <div class='flex flex-1 flex-col w-full items-center'>
+                    <img alt='jersey' src='<%= fixture.away_team.logo %>' style='width:50px; height:50px; border-radius: 50%;'>
+                    <div class='flex flex-row'>
+                      <span class='font-bold'><%= fixture.away_team.name %></span>
+                      <span class='font-bold'><%= fixture.away_team_score %></span>
+                    </div>
+                  </div>
+                </div>
+                <div class='mt-1 text-xs lg:text-sm mb-8'>
+                  <span class='font-medium'>
+                    <%= fixture.datetime.in_time_zone('America/Mexico_City').strftime('%e %b %Y - %H:%M') %>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

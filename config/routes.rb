@@ -7,9 +7,18 @@ Rails.application.routes.draw do
 
   # Home pages
   # -------------------------------------------------
+
   get 'home' => 'home#index'
-  resources :pools, only: %i[show create]
-  resources :leagues, only: %i[index]
+
+  # Leagues pages
+  # -------------------------------------------------
+
+  resources :leagues, only: %i[index] do
+    collection do
+      get ':league_name', to: 'leagues#show', as: 'league'
+      get ':league_name/:round', to: 'leagues#show', as: 'league_round'
+    end
+  end
 
   # User session pages
   # -------------------------------------------------
