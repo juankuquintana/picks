@@ -7,7 +7,7 @@ class LeaguesController < AuthenticatedController
   end
 
   def show
-    @league = League.find_by(id: params[:league_name])
+    @league = League.find_by(parameterized_name: params[:league_name])
     season = @league.most_recent_season
     if params[:round]
       @round = Round.find_by(league: @league, id: params[:round])
