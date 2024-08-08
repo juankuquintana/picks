@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTeamParameterizedName < ActiveRecord::Migration[7.1]
 
   COMMENT = 'The parameterized name of a team'

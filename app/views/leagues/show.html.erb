@@ -8,8 +8,8 @@
       <img alt='league-logo' src='<%= @league.logo %>' style='width:50px; height:50px;'>
       <span class='font-bold ml-5'><%= @league.name %></span>
 
-      <%= form_with url: league_leagues_path(@league.id), method: :get do |form| %>
-        <%= form.select 'round', options_from_collection_for_select(@rounds, :id, :name, @round.id), {}, { class: 'form-select w-48 text-sm py-2 mb-2 sm:mb-0 sm:mr-2', onchange: 'this.form.submit();' } %>
+      <%= form_with url: league_leagues_path(@league.parameterized_name), method: :get do |form| %>
+        <%= form.select 'round', options_from_collection_for_select(@rounds.reverse, :id, :name, @round.id), {}, { class: 'form-select w-48 text-sm py-2 mb-2 sm:mb-0 sm:mr-2', onchange: 'this.form.submit();' } %>
       <% end %>
 
       <div>

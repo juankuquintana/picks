@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddRoundParameterizedName < ActiveRecord::Migration[7.1]
 
   COMMENT = 'The parameterized name of a round'
