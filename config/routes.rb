@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'sidekiq/web'
+# require 'sidekiq/web'
 
 Rails.application.routes.draw do
   accept_email_pattern = %r{[^/]+}
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     resources :users, id: accept_email_pattern, only: %i[index show]
 
     mount Flipper::UI.app(Flipper) => '/flipper', constraints: CanAccessFeatureFlag
-    mount Sidekiq::Web => '/sidekiq', constraints: CanAccessSidekiq
+    # mount Sidekiq::Web => '/sidekiq', constraints: CanAccessSidekiq
   end
 
   root to: 'site#index'

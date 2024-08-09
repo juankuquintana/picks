@@ -43,7 +43,7 @@ Sidekiq.configure_server do |config|
     raise 'Sidekiq schedule file is not configured' unless File.exist?(schedule_file)
 
     schedule = YAML.load_file(schedule_file)
-    Sidekiq::Cron::Job.load_from_hash!(schedule, source: 'schedule')
+    # Sidekiq::Cron::Job.load_from_hash!(schedule, source: 'schedule')
   end
 
   config.redis = { url: PicksConfig.redis_url }
